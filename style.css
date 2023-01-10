@@ -42,7 +42,7 @@ input:focus {
 }
 #result > li {
   flex: 1 0 25%;
-  min-width: 280px;
+  min-width: 500px;
   /* border: 1px solid #16d9e7; */
   background: white;
   margin: 10px;

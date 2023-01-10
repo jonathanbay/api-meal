@@ -22,17 +22,32 @@ function mealsDisplay() {
         // se Limiter à 12 recettes
         meals.length = 12
         
-        result.innerHTML = meals.map((meal) => 
-        `
+        result.innerHTML = meals
+        .map(
+            (meal) => {
+
+            let ingredientsAndMeasures = [];
+
+            for(i=1; i< 21; i++) {
+                if(meal[`strIngredient${i}`]) {
+                    let ingredient = meal[`strIngredient${i}`];
+                    let measure = meal[`strMeasure${i}`];
+
+                    ingredientsAndMeasures.push(`<li>${ingredient} - ${measure}</li>`);
+                }
+            }
+
+        return`
         <li class="card"
-        <h2>${meal.strMeal}</h2>
-        <p>${meal.strArea}</p>
-        <img src=${meal.strMealThumb} alt="photo ${meal.strMeal}">
-        <ul>
-        
-        </ul>
+            <h2>${meal.strMeal}</h2>
+            <p>${meal.strArea}</p>
+            <img src=${meal.strMealThumb} alt="photo ${meal.strMeal}">
+            <ul>
+                ${ingredientsAndMeasures.join("")}
+            </ul>
         </li>
         `
+    }
         ).join("");
     }
 }
